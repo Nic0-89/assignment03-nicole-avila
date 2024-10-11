@@ -23,7 +23,7 @@ jobs:
         run: echo 'setup nodejs'
 
       - name: Install node packages
-        run: echo Install node packages'
+        run: echo 'Install node packages'
 
       - name: Restore database
         run: echo 'Restore database'
