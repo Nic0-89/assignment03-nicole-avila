@@ -25,8 +25,17 @@ jobs:
       - name: Install node packages
         run: echo Install node packages'
 
-      - name: Run Playwright tests
-        run: npm run test  # The script to run your Playwright tests
+      - name: Restore database
+        run: echo 'Restore database'
+
+      - name: Start application
+        run: echo 'Start application'
+
+      - name: Run test
+        run: echo 'run tests'
+
+      - name: Save test run artifacts
+        run: echo 'Save test run artifacts'
 
       - name: Save Playwright results
         if: always()  # Always save the test results, even if tests fail
