@@ -37,9 +37,3 @@ jobs:
       - name: Save test run artifacts
         run: echo 'Save test run artifacts'
 
-      - name: Save Playwright results
-        if: always()  # Always save the test results, even if tests fail
-        uses: actions/upload-artifact@v3
-        with:
-          name: playwright-results
-          path:
