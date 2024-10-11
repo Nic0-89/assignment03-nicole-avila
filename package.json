@@ -1,0 +1,21 @@
+{
+  "name": "assignment_03-nicole-avila",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "npx json-server db.json",
+    "run-tests": "npx playwright test", 
+    "ui-mode":"npx playwright test --ui"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.7.5"
+  },
+  "dependencies": {
+    "json-server": "^1.0.0-beta.3"
+  }
+}
