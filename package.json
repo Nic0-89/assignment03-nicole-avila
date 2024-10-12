@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "server": "npx json-server db.json",
-    "run-tests": "npx playwright test", 
-    "ui-mode":"npx playwright test --ui"
+    "run-tests": "npx playwright test",
+    "ui-mode": "npx playwright test --ui"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,8 @@
     "@types/node": "^22.7.5"
   },
   "dependencies": {
-    "json-server": "^1.0.0-beta.3"
+    "dotenv": "^16.4.5",
+    "json-server": "^1.0.0-beta.3",
+    "wait-on": "^8.0.1"
   }
 }
