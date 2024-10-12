@@ -12,9 +12,8 @@ on:
 
 jobs:
   
-  run-automated-tests:
+  e2e-test:
     runs-on: ubuntu-latest
-
 
     steps:
       - name: Checkout code / Fetch code
@@ -28,14 +27,29 @@ jobs:
       - name: Install node packages
         run: npm install
 
+      - name: Install playwright
+        run: npm playwright install
+      
+      - name: Pull Docker image
+        run: docker pull rasilva1986/my-vue-app:v1
+
+
+
+
       - name: Restore database
         run: cat dbBackUp.json > db.json
 
       - name: Start application
-        run: npm run server &
+        run: docker run -d -p 3000:3000 rasilva1986/my-vue-app:v1
+
+        # wait until THE APP IS UP
+      - name: Wait until the application is up
+        run: npx wait-on http://localhost:3000
 
       - name: Run test
         run: npm run run-tests
+
+
 
       - name: Save test run artifacts
         uses: actions/upload-artifact@v4
