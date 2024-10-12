@@ -36,5 +36,13 @@ jobs:
         run: echo 'Run tests'
 
       - name: Save test run artifacts
-        run: echo 'Save test run artifacts'
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-results # You can rename this to whatever suits your case
+          path: test-results # Update this to the actual path where Playwright results are stored
+          if-no-files-found: warn
 
+
+
+        #         - name: Save test run artifacts
+        # run: echo 'Save test run artifacts'
