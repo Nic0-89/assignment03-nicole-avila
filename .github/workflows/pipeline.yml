@@ -15,6 +15,7 @@ jobs:
   run-automated-tests:
     runs-on: ubuntu-latest
 
+
     steps:
       - name: Checkout code/Fetcg code
         run: echo 'Fetch code'
@@ -32,7 +33,7 @@ jobs:
         run: echo 'Start application'
 
       - name: Run test
-        run: echo 'run tests'
+        run: echo 'Run tests'
 
       - name: Save test run artifacts
         run: echo 'Save test run artifacts'
