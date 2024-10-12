@@ -18,31 +18,31 @@ jobs:
 
     steps:
       - name: Checkout code/Fetcg code
-        run: echo 'Fetch code'
+        run: echo "Fetch code"
 
       - name: Set up Node.js version
-        run: echo 'setup nodejs'
+        run: echo "setup nodejs"
 
       - name: Install node packages
-        run: echo 'Install node packages'
+        run: echo "Install node packages"
 
       - name: Restore database
-        run: echo 'Restore database'
+        run: echo "Restore database"
 
       - name: Start application
-        run: echo 'Start application'
+        run: echo "Start application"
 
       - name: Run test
-        run: echo 'Run tests'
+        run: echo "Run tests"
 
       - name: Save test run artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: playwright-results # You can rename this to whatever suits your case
-          path: test-results # Update this to the actual path where Playwright results are stored
+          name: playwright-results 
+          path: Y:\assignment_03-nicole-avila\test-results\.last-run.json
           if-no-files-found: warn
 
 
 
         #         - name: Save test run artifacts
-        # run: echo 'Save test run artifacts'
+        # run: echo "Save test run artifacts"
