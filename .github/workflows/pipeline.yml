@@ -17,30 +17,33 @@ jobs:
 
 
     steps:
-      - name: Checkout code/Fetch code
-        run: echo "Fetch code"
+      - name: Checkout code / Fetch code
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js version
-        run: echo "setup nodejs"
+      - name: Setup Node.js version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - name: Install node packages
-        run: echo "Install node packages"
+        run: npm install
 
       - name: Restore database
-        run: echo "Restore database"
+        run: cat dbBackUp.json > db.json
 
       - name: Start application
-        run: echo "Start application"
+        run: npm run server
 
       - name: Run test
-        run: echo "Run tests"
+        run: npm run run-tests
 
       - name: Save test run artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: playwright-results 
-          path:  assignment_03-nicole-avila/test-results/
+          name: playwright-test-results 
+          path:  ./playwright-report
           if-no-files-found: warn
+          include-hidden-files: false
 
 
 
