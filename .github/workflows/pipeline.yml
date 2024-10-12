@@ -33,12 +33,6 @@ jobs:
       - name: Pull Docker image
         run: docker pull rasilva1986/my-vue-app:v1
 
-
-
-
-      - name: Restore database
-        run: cat dbBackUp.json > db.json
-
       - name: Start application
         run: docker run -d -p 3000:3000 rasilva1986/my-vue-app:v1
 
@@ -47,6 +41,9 @@ jobs:
         run: npx wait-on http://localhost:3000
 
       - name: Run test
+        env:
+          TEST_USERNAME: ${{secrets.TEST_USERNAME}}
+          TEST_PASSWORD: ${{secrets.TEST_PASSWORD}}
         run: npm run run-tests
 
 
