@@ -44,8 +44,3 @@ jobs:
           path:  ./playwright-report
           if-no-files-found: warn
           include-hidden-files: false
-
-
-
-        #         - name: Save test run artifacts
-        # run: echo "Save test run artifacts"
