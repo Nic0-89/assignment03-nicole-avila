@@ -4,17 +4,16 @@ on:
   push:
     branches:
       - main
-      - gh-actions 
+      - gh-actions-v2 
   pull_request:
     branches:
       - main 
-      - gh-actions
+      - gh-actions-v2
 
 jobs:
   
-  run-automated-tests:
+  e2e-test:
     runs-on: ubuntu-latest
-
 
     steps:
       - name: Checkout code / Fetch code
@@ -28,14 +27,26 @@ jobs:
       - name: Install node packages
         run: npm install
 
-      - name: Restore database
-        run: cat dbBackUp.json > db.json
+      - name: Install playwright
+        run: npx playwright install
+      
+      - name: Pull Docker image
+        run: docker pull rasilva1986/my-vue-app:v1
 
       - name: Start application
-        run: npm run server
+        run: docker run -d -p 3000:3000 rasilva1986/my-vue-app:v1
+
+        # wait until THE APP IS UP
+      - name: Wait until the application is up
+        run: npx wait-on http://localhost:3000
 
       - name: Run test
+        env:
+          TEST_USERNAME: ${{secrets.TEST_USERNAME}}
+          TEST_PASSWORD: ${{secrets.TEST_PASSWORD}}
         run: npm run run-tests
+
+
 
       - name: Save test run artifacts
         uses: actions/upload-artifact@v4
@@ -44,8 +55,3 @@ jobs:
           path:  ./playwright-report
           if-no-files-found: warn
           include-hidden-files: false
-
-
-
-        #         - name: Save test run artifacts
-        # run: echo "Save test run artifacts"
